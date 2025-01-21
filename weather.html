@@ -8,71 +8,74 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <!-- Weather Card -->
-  <div class="max-w-4xl w-full flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+  <div class="w-full h-screen max-h-screen md:h-[90vh] bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
     <!-- Left Panel -->
     <div 
-      class="flex-1 bg-cover bg-center text-white p-6" 
+      class="flex-1 bg-cover bg-center text-white p-10 flex flex-col justify-between" 
       style="background-image: url('image/weather.jpg');">
-      <div class="hamid">
-        <h2 class="text-3xl font-bold">Tuesday</h2>
-        <p class="text-lg">20 Jun 2022</p>
-        <p class="mt-2 flex items-center">
+      <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+        <h2 class="text-5xl font-bold">Tuesday</h2>
+        <p class="text-2xl mt-2">20 Jun 2022</p>
+        <p class="mt-4 flex items-center text-xl">
           <span class="mr-2">📍</span>Biarritz, FR
         </p>
-        <div class="mt-6">
-          <p class="text-6xl">☀️</p>
-          <h1 class="text-5xl font-bold mt-2">29 °C</h1>
-          <p class="text-lg">Sunny</p>
-        </div>
+      </div>
+      <div class="hamid">
+        <p class="text-8xl">☀️</p>
+        <h1 class="text-7xl font-bold mt-4">29 °C</h1>
+        <p class="text-2xl mt-2">Sunny</p>
       </div>
     </div>
+
     <!-- Right Panel -->
-    <div class="flex-1 bg-gray-900 text-white p-6 flex flex-col justify-between">
+    <div class="flex-1 bg-gray-900 text-white p-10 flex flex-col justify-between">
       <!-- Weather Details -->
       <div>
-        <div class="flex justify-between mb-2">
+        <div class="flex justify-between mb-4 text-lg">
           <p class="font-semibold">PRECIPITATION</p>
           <p>0%</p>
         </div>
-        <div class="flex justify-between mb-2">
+        <div class="flex justify-between mb-4 text-lg">
           <p class="font-semibold">HUMIDITY</p>
           <p>42%</p>
         </div>
-        <div class="flex justify-between mb-6">
+        <div class="flex justify-between mb-8 text-lg">
           <p class="font-semibold">WIND</p>
           <p>3 km/h</p>
         </div>
       </div>
+
       <!-- Forecast -->
-      <div class="flex justify-between items-center gap-2 mb-6">
-        <div class="text-center p-2 bg-white text-gray-900 rounded-lg">
+      <div class="flex justify-between items-center gap-4 mb-8">
+        <div class="text-center p-4 bg-white text-gray-900 rounded-lg">
           <p>☀️</p>
-          <p>Tue</p>
-          <p class="font-bold">30 °C</p>
+          <p class="mt-2">Tue</p>
+          <p class="font-bold text-lg mt-1">30 °C</p>
         </div>
-        <div class="text-center p-2 bg-gray-700 rounded-lg">
+        <div class="text-center p-4 bg-gray-700 rounded-lg">
           <p>☁️</p>
-          <p>Wed</p>
-          <p class="font-bold">22 °C</p>
+          <p class="mt-2">Wed</p>
+          <p class="font-bold text-lg mt-1">22 °C</p>
         </div>
-        <div class="text-center p-2 bg-gray-700 rounded-lg">
+        <div class="text-center p-4 bg-gray-700 rounded-lg">
           <p>🌧️</p>
-          <p>Thu</p>
-          <p class="font-bold">06 °C</p>
+          <p class="mt-2">Thu</p>
+          <p class="font-bold text-lg mt-1">06 °C</p>
         </div>
-        <div class="text-center p-2 bg-gray-700 rounded-lg">
+        <div class="text-center p-4 bg-gray-700 rounded-lg">
           <p>☀️</p>
-          <p>Fri</p>
-          <p class="font-bold">26 °C</p>
+          <p class="mt-2">Fri</p>
+          <p class="font-bold text-lg mt-1">26 °C</p>
         </div>
-        <div class="text-center p-2 bg-gray-700 rounded-lg">
+        <div class="text-center p-4 bg-gray-700 rounded-lg">
           <p>☀️</p>
-          <p>sat</p>
-          <p class="font-bold">26 °C</p>
+          <p class="mt-2">Fri</p>
+          <p class="font-bold text-lg mt-1">26 °C</p>
         </div>
       </div>
+
       <!-- Button -->
-      <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold">
+      <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg">
         🌐 Change Location
       </button>
     </div>
