@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[url('brief4/image/weather.jpg')] ">
+
+  <div >
+    <!-- ... -->
+  
+  <!-- Weather Card -->
+  <div class="max-w-4xl w-full bg-gray-800 text-white rounded-xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+    <!-- Left Panel -->
+    <div class="relative w-full md:w-1/2 bg-cover bg-center p-6 flex flex-col justify-between" style="background-image: url('https://via.placeholder.com/400x600');">
+      <div>
+        <h2 class="text-3xl font-bold">Tuesday</h2>
+        <p class="text-lg">20 Jun 2022</p>
+        <p class="mt-2 flex items-center"><span class="mr-2">📍</span>Biarritz, FR</p>
+      </div>
+      <div class="flex items-center mt-6">
+        <div class="text-6xl">☀️</div>
+        <div class="ml-4">
+          <h1 class="text-5xl font-bold">29 °C</h1>
+          <p class="text-lg">Sunny</p>
+        </div>
+      </div>
+      <div class="absolute inset-0 bg-black opacity-10"></div>
+    </div>
+    <!-- Right Panel -->
+    <div class="w-full md:w-1/2 bg-gray-900 p-6 flex flex-col justify-between">
+      <!-- Weather Details -->
+      <div>
+        <div class="flex justify-between mb-2">
+          <p class="text-sm font-semibold">PRECIPITATION</p>
+          <p class="text-sm">0%</p>
+        </div>
+        <div class="flex justify-between mb-2">
+          <p class="text-sm font-semibold">HUMIDITY</p>
+          <p class="text-sm">42%</p>
+        </div>
+        <div class="flex justify-between mb-6">
+          <p class="text-sm font-semibold">WIND</p>
+          <p class="text-sm">3 km/h</p>
+        </div>
+      </div>
+      <!-- Forecast -->
+      <div class="flex justify-between items-center gap-2 mb-6">
+        <div class="flex-1 text-center p-2 bg-white text-gray-800 rounded-lg">
+          <p>☀️</p>
+          <p>Tue</p>
+          <p class="font-bold">30 °C</p>
+        </div>
+        <div class="flex-1 text-center p-2 bg-gray-700 rounded-lg">
+          <p>☁️</p>
+          <p>Wed</p>
+          <p class="font-bold">22 °C</p>
+        </div>
+        <div class="flex-1 text-center p-2 bg-gray-700 rounded-lg">
+          <p>🌧️</p>
+          <p>Thu</p>
+          <p class="font-bold">06 °C</p>
+        </div>
+        <div class="flex-1 text-center p-2 bg-gray-700 rounded-lg">
+          <p>☀️</p>
+          <p>Fri</p>
+          <p class="font-bold">26 °C</p>
+        </div>
+        <div class="flex-1 text-center p-2 bg-gray-700 rounded-lg">
+          <p>☀️</p>
+          <p>Fri</p>
+          <p class="font-bold">26 °C</p>
+        </div>
+      </div>
+      <!-- Button -->
+      <button class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:opacity-90">
+        🌐 Change Location
+      </button>
+    </div>
+  </div>
+</body>
+</html>
