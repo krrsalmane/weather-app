@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Card</title>
+  <title>Weather App</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <!-- Weather Card -->
-  <div class="w-full h-screen max-h-screen md:h-[90vh] bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+  <div class="w-full min-h-screen md:h-[90vh] bg-white shadow-lg rounded-lg overflow-hidden flex flex-col sm:flex-col md:flex-row">
     <!-- Left Panel -->
     <div 
       class="flex-1 bg-cover bg-center text-white p-10 flex flex-col justify-between" 
-      style="background-image: url('image/weather.jpg');">
-      <div class="bg-black bg-opacity-50 p-8 rounded-lg">
+      style="background-image: url('image/weather.jpg'); ">
+      <div >
         <h2 class="text-5xl font-bold">Tuesday</h2>
         <p class="text-2xl mt-2">20 Jun 2022</p>
         <p class="mt-4 flex items-center text-xl">
-          <span class="mr-2">📍</span>Biarritz, FR
+          <img src="image/image_location_2-removebg-preview.png"  width="38">Biarritz, FR
         </p>
       </div>
-      <div class="hamid">
-        <p class="text-8xl">☀️</p>
+      <div class="flex flex-col ">
+        <img src="image/sun.png" alt="Sunny weather icon" width="100">
         <h1 class="text-7xl font-bold mt-4">29 °C</h1>
         <p class="text-2xl mt-2">Sunny</p>
       </div>
@@ -46,30 +46,30 @@
       </div>
 
       <!-- Forecast -->
-      <div class="flex justify-between items-center gap-4 mb-8">
+      <div class="flex justify-between items-center gap-2 mb-8">
         <div class="text-center p-4 bg-white text-gray-900 rounded-lg">
-          <p>☀️</p>
+          <img src="icons/amcharts_weather_icons_1.0.0/static/cloudy-night-1.svg" alt="Cloudy night icon">
           <p class="mt-2">Tue</p>
           <p class="font-bold text-lg mt-1">30 °C</p>
         </div>
         <div class="text-center p-4 bg-gray-700 rounded-lg">
-          <p>☁️</p>
+          <img src="icons/amcharts_weather_icons_1.0.0/static/rainy-7.svg" alt="Rainy weather icon">
           <p class="mt-2">Wed</p>
           <p class="font-bold text-lg mt-1">22 °C</p>
         </div>
         <div class="text-center p-4 bg-gray-700 rounded-lg">
-          <p>🌧️</p>
+          <img src="icons/amcharts_weather_icons_1.0.0/static/snowy-4.svg" alt="Snowy weather icon">
           <p class="mt-2">Thu</p>
           <p class="font-bold text-lg mt-1">06 °C</p>
         </div>
         <div class="text-center p-4 bg-gray-700 rounded-lg">
-          <p>☀️</p>
+          <img src="icons/amcharts_weather_icons_1.0.0/static/thunder.svg" alt="Thunder weather icon">
           <p class="mt-2">Fri</p>
           <p class="font-bold text-lg mt-1">26 °C</p>
         </div>
         <div class="text-center p-4 bg-gray-700 rounded-lg">
-          <p>☀️</p>
-          <p class="mt-2">Fri</p>
+          <img src="icons/amcharts_weather_icons_1.0.0/static/rainy-2.svg" alt="Rainy weather icon">
+          <p class="mt-2">Sat</p>
           <p class="font-bold text-lg mt-1">26 °C</p>
         </div>
       </div>
