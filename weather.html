@@ -8,22 +8,19 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <!-- Weather Card -->
-  <div class="w-full min-h-screen md:h-[90vh] bg-white shadow-lg rounded-lg overflow-hidden flex flex-col sm:flex-col md:flex-row">
+  <div class="weather-card w-full min-h-screen md:h-[90vh] bg-white shadow-lg rounded-lg overflow-hidden flex flex-col sm:flex-col md:flex-row">
     <!-- Left Panel -->
     <div 
       class="flex-1 bg-cover bg-center text-white p-10 flex flex-col justify-between" 
-      style="background-image: url('image/weather.jpg'); ">
-      <div >
-        <h2 class="text-5xl font-bold">Tuesday</h2>
-        <p class="text-2xl mt-2">20 Jun 2022</p>
-        <p class="mt-4 flex items-center text-xl">
-          <img src="image/image_location_2-removebg-preview.png"  width="38">Biarritz, FR
-        </p>
+      style="background-image: url('image/weather.jpg');">
+      <div>
+        <h2 class="date text-5xl font-bold">Tuesday</h2>
+        <p class="location text-2xl mt-2">Biarritz, FR</p>
       </div>
-      <div class="flex flex-col ">
-        <img src="image/sun.png" alt="Sunny weather icon" width="100">
-        <h1 class="text-7xl font-bold mt-4">29 °C</h1>
-        <p class="text-2xl mt-2">Sunny</p>
+      <div class="flex flex-col">
+        <img class="weather-icon" src="image/sun.png" alt="Sunny weather icon" width="100">
+        <h1 class="temperature text-7xl font-bold mt-4">29 °C</h1>
+        <p class="description text-2xl mt-2">Sunny</p>
       </div>
     </div>
 
@@ -33,15 +30,15 @@
       <div>
         <div class="flex justify-between mb-4 text-lg">
           <p class="font-semibold">PRECIPITATION</p>
-          <p>0%</p>
+          <p class="precipitation">0 mm</p>
         </div>
         <div class="flex justify-between mb-4 text-lg">
           <p class="font-semibold">HUMIDITY</p>
-          <p>42%</p>
+          <p class="humidity">42%</p>
         </div>
         <div class="flex justify-between mb-8 text-lg">
           <p class="font-semibold">WIND</p>
-          <p>3 km/h</p>
+          <p class="wind">3 km/h</p>
         </div>
       </div>
 
@@ -75,10 +72,13 @@
       </div>
 
       <!-- Button -->
-      <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg">
+      <button class="change-location w-full bg-gray-700 hover:bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg">
         🌐 Change Location
       </button>
     </div>
   </div>
+
+  <!-- Link to JavaScript -->
+  <script src="app.js"></script>
 </body>
 </html>
