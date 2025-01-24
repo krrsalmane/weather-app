@@ -78,4 +78,21 @@ document.addEventListener("DOMContentLoaded", function () {
     return icons[iconCode] || "❓";
   }
 
-  
+  // Capitalize the first letter
+  function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  // Handle search button click
+  searchButton.addEventListener("click", function () {
+    const city = searchInput.value.trim();
+    if (city) {
+      fetchWeather(city);
+    } else {
+      alert("Please enter a city name");
+    }
+  });
+
+  // Load default city weather
+  fetchWeather("beni mellal");
+});
