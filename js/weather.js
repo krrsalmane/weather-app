@@ -41,4 +41,23 @@ document.addEventListener("DOMContentLoaded", function () {
     weatherIconEl.textContent = getIcon(data.weather[0].icon);
   }
 
- 
+  // Update forecast
+  function updateForecast(data) {
+    forecastEl.innerHTML = "";
+    const forecasts = data.list.filter((item) => item.dt_txt.includes("12:00:00")).slice(0, 5);
+
+    forecasts.forEach(function (forecast) {
+      const date = new Date(forecast.dt_txt);
+      const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+      const temp = `${Math.round(forecast.main.temp)}°C`;
+      const icon = getIcon(forecast.weather[0].icon);
+
+      const forecastHTML = `
+        <div class="day-forecast text-center">
+          <div class="day-name text-gray-400">${dayName}</div>
+          <div class="weather-icon mt-2">${icon}</div>
+          <div class="temperature text-lg mt-2">${temp}</div>
+        </div>`;
+      forecastEl.innerHTML += forecastHTML;
+    });
+  }
