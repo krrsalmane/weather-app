@@ -30,4 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => alert("Forecast not available"));
   }
 
-  
+  // Update current weather
+  function updateCurrentWeather(data) {
+    const today = new Date();
+    dayEl.textContent = today.toLocaleDateString("en-US", { weekday: "long" });
+    dateEl.textContent = today.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
+    locationEl.textContent = `${data.name}, ${data.sys.country}`;
+    temperatureEl.textContent = `${Math.round(data.main.temp)}°C`;
+    descriptionEl.textContent = capitalize(data.weather[0].description);
+    weatherIconEl.textContent = getIcon(data.weather[0].icon);
+  }
+
+ 
