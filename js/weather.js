@@ -12,6 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const descriptionEl = document.getElementById("weather-description");
   const forecastEl = document.getElementById("weekly-forecast");
 
- 
+  // Function to fetch weather data
+  function fetchWeather(city) {
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
+
+    // Fetch current weather
+    fetch(weatherURL)
+      .then((response) => response.json())
+      .then((data) => updateCurrentWeather(data))
+      .catch(() => alert("City not found"));
+
+    // Fetch forecast
+    fetch(forecastURL)
+      .then((response) => response.json())
+      .then((data) => updateForecast(data))
+      .catch(() => alert("Forecast not available"));
+  }
 
   
