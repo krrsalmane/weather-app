@@ -1,98 +1,153 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_KEY = "4d44a6dcc4e01fd655d15da56deda2ff";
+  // API key for the weather data
+  var API_KEY = "4d44a6dcc4e01fd655d15da56deda2ff";
 
-  // Select elements
-  const searchInput = document.getElementById("city-input");
-  const searchButton = document.getElementById("search-button");
-  const dayEl = document.getElementById("day-name");
-  const dateEl = document.getElementById("current-date");
-  const locationEl = document.getElementById("location-name");
-  const weatherIconEl = document.getElementById("weather-icon");
-  const temperatureEl = document.getElementById("temperature");
-  const descriptionEl = document.getElementById("weather-description");
-  const forecastEl = document.getElementById("weekly-forecast");
+  // Select elements from the DOM
+  var searchInput = document.getElementById("city-input");
+  var searchButton = document.getElementById("search-button");
+  var dayEl = document.getElementById("day-name");
+  var dateEl = document.getElementById("current-date");
+  var locationEl = document.getElementById("location-name");
+  var weatherIconEl = document.getElementById("weather-icon");
+  var temperatureEl = document.getElementById("temperature");
+  var descriptionEl = document.getElementById("weather-description");
+  var forecastEl = document.getElementById("weekly-forecast");
 
   // Function to fetch weather data
   function fetchWeather(city) {
-    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
-    const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
+    var weatherURL =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&units=metric&appid=" +
+      API_KEY;
+    var forecastURL =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      city +
+      "&units=metric&appid=" +
+      API_KEY;
 
     // Fetch current weather
     fetch(weatherURL)
-      .then((response) => response.json())
-      .then((data) => updateCurrentWeather(data))
-      .catch(() => alert("City not found"));
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        updateCurrentWeather(data);
+      })
+      .catch(function () {
+        alert("City not found");
+      });
 
     // Fetch forecast
     fetch(forecastURL)
-      .then((response) => response.json())
-      .then((data) => updateForecast(data))
-      .catch(() => alert("Forecast not available"));
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        updateForecast(data);
+      })
+      .catch(function () {
+        alert("Forecast not available");
+      });
   }
 
-  // Update current weather
+  // Function to update the current weather
   function updateCurrentWeather(data) {
-    const today = new Date();
+    var today = new Date();
     dayEl.textContent = today.toLocaleDateString("en-US", { weekday: "long" });
-    dateEl.textContent = today.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
-    locationEl.textContent = `${data.name}, ${data.sys.country}`;
-    temperatureEl.textContent = `${Math.round(data.main.temp)}°C`;
+    dateEl.textContent = today.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    locationEl.textContent = data.name + ", " + data.sys.country;
+    temperatureEl.textContent = Math.round(data.main.temp) + "°C";
     descriptionEl.textContent = capitalize(data.weather[0].description);
     weatherIconEl.textContent = getIcon(data.weather[0].icon);
   }
 
-  // Update forecast
+  // Function to update the forecast for the week
   function updateForecast(data) {
-    forecastEl.innerHTML = "";
-    const forecasts = data.list.filter((item) => item.dt_txt.includes("12:00:00")).slice(0, 5);
+    forecastEl.innerHTML = ""; // Clear previous forecast
 
-    forecasts.forEach(function (forecast) {
-      const date = new Date(forecast.dt_txt);
-      const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
-      const temp = `${Math.round(forecast.main.temp)}°C`;
-      const icon = getIcon(forecast.weather[0].icon);
+    var forecasts = [];
+    for (var i = 0; i < data.list.length; i++) {
+      if (data.list[i].dt_txt.includes("12:00:00")) {
+        forecasts.push(data.list[i]);
+      }
+    }
 
-      const forecastHTML = `
-        <div class="day-forecast text-center">
-          <div class="day-name text-gray-400">${dayName}</div>
-          <div class="weather-icon mt-2">${icon}</div>
-          <div class="temperature text-lg mt-2">${temp}</div>
-        </div>`;
+    // Only show the first 5 days
+    for (var j = 0; j < 5; j++) {
+      var forecast = forecasts[j];
+      var date = new Date(forecast.dt_txt);
+      var dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+      var temp = Math.round(forecast.main.temp) + "°C";
+      var icon = getIcon(forecast.weather[0].icon);
+
+      // Build forecast HTML
+      var forecastHTML =
+        '<div class="day-forecast text-center">' +
+        '<div class="day-name text-gray-400">' +
+        dayName +
+        "</div>" +
+        '<div class="weather-icon mt-2">' +
+        icon +
+        "</div>" +
+        '<div class="temperature text-lg mt-2">' +
+        temp +
+        "</div>" +
+        "</div>";
+
       forecastEl.innerHTML += forecastHTML;
-    });
+    }
   }
 
-  // Get weather icon
+  // Function to get weather icons
   function getIcon(iconCode) {
-    const icons = {
-      "01d": "☀️", "01n": "🌕",
-      "02d": "⛅", "02n": "🌥️",
-      "03d": "☁️", "03n": "☁️",
-      "04d": "☁️", "04n": "☁️",
-      "09d": "🌧️", "09n": "🌧️",
-      "10d": "🌦️", "10n": "🌧️",
-      "11d": "⛈️", "11n": "⛈️",
-      "13d": "❄️", "13n": "❄️",
-      "50d": "🌫️", "50n": "🌫️",
+    var icons = {
+      "01d": "☀️",
+      "01n": "🌕",
+      "02d": "⛅",
+      "02n": "🌥️",
+      "03d": "☁️",
+      "03n": "☁️",
+      "04d": "☁️",
+      "04n": "☁️",
+      "09d": "🌧️",
+      "09n": "🌧️",
+      "10d": "🌦️",
+      "10n": "🌧️",
+      "11d": "⛈️",
+      "11n": "⛈️",
+      "13d": "❄️",
+      "13n": "❄️",
+      "50d": "🌫️",
+      "50n": "🌫️",
     };
-    return icons[iconCode] || "❓";
+
+    if (icons[iconCode]) {
+      return icons[iconCode];
+    } else {
+      return "❓";
+    }
   }
 
-  // Capitalize the first letter
+  // Function to capitalize the first letter of a string
   function capitalize(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  // Handle search button click
+  // Add event listener for the search button
   searchButton.addEventListener("click", function () {
-    const city = searchInput.value.trim();
-    if (city) {
-      fetchWeather(city);
-    } else {
+    var city = searchInput.value.trim();
+    if (city === "") {
       alert("Please enter a city name");
+    } else {
+      fetchWeather(city);
     }
   });
 
-  // Load default city weather
+  // Load the weather for a default city
   fetchWeather("beni mellal");
 });
